@@ -13,5 +13,7 @@ archive:
 sync: archive
 	rsync -av --chmod=g+w --chown=:gs-priv $(HOME)/MAVEN/com/ ghostscript.com:/var/www/maven.ghostscript.com/com/
 
+tasks:
+	./gradlew tasks
 clean:
 	rm -rf .cxx .externalNativeBuild .gradle build
