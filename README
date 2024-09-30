@@ -1,3 +1,17 @@
+#Publish Package
+
+- make -C libmupdf generate
+- make release
+- make archive
+- cd MAVEN/net/timelegend/mupdf/fitz/1.24.9.1
+- gpg --list-keys
+- gpg --generate-key
+- gpg --keyserver keys.opengpg.org --send-keys <key sha1 value>
+- gpg -ab fitz-1.24.9.1.aar
+- gpg -ab fitz-1.24.9.1.pom
+- cd MAVEN
+- zip release.zip net/timelegend/mupdf/fitz/1.24.9.1/*
+
 # MuPDF Android Fitz
 
 This project builds the MuPDF Java bindings for Android.
