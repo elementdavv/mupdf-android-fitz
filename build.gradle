@@ -6,6 +6,11 @@ version = '1.24.9.1'
 
 buildscript {
 	repositories {
+		if (project.hasProperty('MAVEN_REPO')) {
+			maven { url MAVEN_REPO }
+		} else {
+			maven { url "file://${System.properties['user.home']}/MAVEN" }
+		}
 		google()
 		mavenCentral()
 	}
@@ -16,6 +21,11 @@ buildscript {
 
 allprojects {
 	repositories {
+		if (project.hasProperty('MAVEN_REPO')) {
+			maven { url MAVEN_REPO }
+		} else {
+			maven { url "file://${System.properties['user.home']}/MAVEN" }
+		}
 		google()
 		mavenCentral()
 	}
@@ -88,6 +98,16 @@ project.afterEvaluate {
 						dependencyNode.appendNode('artifactId', it.name)
 						dependencyNode.appendNode('version', it.version)
 					}
+				}
+			}
+		}
+		repositories {
+			maven {
+				name 'Local'
+				if (project.hasProperty('MAVEN_REPO')) {
+					url = MAVEN_REPO
+				} else {
+					url = "file://${System.properties['user.home']}/MAVEN"
 				}
 			}
 		}
