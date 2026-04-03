@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 group = 'net.timelegend.mupdf'
-version = '1.24.9.6'
+version = '1.24.9.7'
 
 buildscript {
 	repositories {
@@ -15,7 +15,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:8.1.1'
+		classpath 'com.android.tools.build:gradle:8.6.1'
 	}
 }
 
@@ -32,12 +32,13 @@ allprojects {
 }
 
 android {
-	compileSdkVersion 34
+	compileSdkVersion 35
+	ndkVersion '28.2.13676358'
 
 	defaultConfig {
         namespace 'net.timelegend.mupdf.fitz'
 		minSdkVersion 21
-		targetSdkVersion 34
+		targetSdkVersion 35
 
 		externalNativeBuild.ndkBuild.arguments '-j4'
 
