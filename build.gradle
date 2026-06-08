@@ -42,6 +42,10 @@ android {
 
 		externalNativeBuild.ndkBuild.arguments '-j4'
 
+		if (project.hasProperty('LIBARCHIVE_DIR')) {
+		    externalNativeBuild.ndkBuild.arguments 'LIBARCHIVE_DIR=' + LIBARCHIVE_DIR
+		}
+
 		// Set ABI_FILTERS in your gradle.properties file
 		if (project.hasProperty('ABI_FILTERS')) {
 			ndk.abiFilters = []
